@@ -7,6 +7,7 @@ const { exists, overwritePrint, configs, mkdir, isFolder } = require('../lib/hel
 const { Start, getScanned } = require('../lib/getAllFiles.js');
 const logger = require('../lib/logger.js');
 const minify = require('../lib/minify.js');
+const remover = require('../lib/removeOldFiles.js');
 
 // Package Info
 const pkg = require('../package.json');
@@ -37,7 +38,7 @@ if(!exists(input)) {
 process.stdout.write(`Scanning directory: ${global.input}\n`);
 Start(global.input);
 overwritePrint(`Scanned ${getScanned().length} files and folders.`);
-console.log();
+console.log("");
 
 const FOLDERS = [];
 const FILES = [];
@@ -66,14 +67,18 @@ if(modified.length > 0) {
     
     // Start and get files that failed to take actions
     const failed = minify.start(modified);
-    console.log("\n");
+    overwritePrint("");
     
     // Save files that has been minified or copied
     logger.saveLogs(FILES.filter((file) => {
         return failed.indexOf(file) == -1;
     }));
     
-    overwritePrint('Minified!');
+    console.log('Minified!');
 } else {
     console.log("Looks clean...");
 }
+
+// Check and delete files if it does not exists in original copy
+remover.setInOut(global.input, global.output);
+remover.startRemoving();
