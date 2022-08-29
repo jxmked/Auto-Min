@@ -1,0 +1,22 @@
+{
+  "name": "web-minifier",
+  "version": "1.0.0",
+  "description": "\"Create a minified mirror version of your js, css, html, json files\"",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jxmked",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css": "^5.3.1",
+    "commander": "^9.4.0",
+    "hjson": "^3.2.2",
+    "html-minifier": "^4.0.0",
+    "jsonminify": "^0.4.2",
+    "uglify-js": "^3.17.0"
+  },
+  "bin": {
+    "webminifier": "bin/index.js"
+  }
+}

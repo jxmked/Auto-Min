@@ -1,0 +1,13 @@
+{
+
+    "exclude" : [
+        ".git",
+        ".vscode",
+        ".github",
+        "package.json",
+        "package-lock.json",
+        ".gitignore"
+    ],
+    
+    "config_dir": ".webminifier"
+}
