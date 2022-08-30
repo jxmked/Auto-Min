@@ -21,6 +21,11 @@ or
 | -i, --input | Input Directory | Required |
 | -o, --output | Output Directory | Rrquired |
 
+## Notes:
+
+- Output folder will be overwritten and remove files that doesn't belong to original copies
+- Install it globally
+
 ## Description
 
 Create minified mirror version of you codes written in JavaScript, Css, Html and JSON.
