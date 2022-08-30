@@ -5,7 +5,6 @@ Create minified mirror of your JS, CSS, HTML, JSON files.
 ## Installation
 - `git clone https://github.com/jxmked/Web-Minifier.git`
 - `cd Web-Minifier && npm init`
-- `npm link`
 
 
 ## Command
