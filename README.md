@@ -1,10 +1,16 @@
 # Automin
+
 Create minified mirror of your JS, CSS, HTML, JSON files. 
 
 
 ## Installation
-- `git clone https://github.com/jxmked/Web-Minifier.git`
-- `cd Web-Minifier && npm init`
+
+With NPM: `npm install -g automin`
+
+or
+
+- `git clone https://github.com/jxmked/Auto-Min.git`
+- `cd Auto-Min && npm init -g`
 
 
 ## Command
@@ -14,6 +20,24 @@ Create minified mirror of your JS, CSS, HTML, JSON files.
 | -h, --help | Print Help | Optional |
 | -i, --input | Input Directory | Required |
 | -o, --output | Output Directory | Rrquired |
+
+## Description
+
+Create minified mirror version of you codes written in JavaScript, Css, Html and JSON.
+Automatically remove and keep the same infrastructure of yoyr original code BUT minified.
+Can work Offline after installation.
+
+Easy To use, just `automin -i <input> -o <output>` and wait until its done.
+
+It may takes time on first launch.
+
+And in the next launch only the modified file will be minified or copy to the mirror version.
+
+Files with file format of `.js .css, .html, .json` will be minified.
+
+Except for files with `.min.js, .min.css, .min.json, .min.html` at the end.
+
+Force skip for `.git, package.json, package-lock.json, .vscode, .github` files and folder.
 
 ----
 
