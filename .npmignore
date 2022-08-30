@@ -24,3 +24,7 @@ yarn-error.log*
 
 #My file
 files.xio.txt
+Auto-Listen
+tsconfig.json
+.github
+.vscode
