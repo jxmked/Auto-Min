@@ -44,6 +44,15 @@ Except for files with `.min.js, .min.css, .min.json, .min.html` at the end.
 
 Force skip for `.git, package.json, package-lock.json, .vscode, .github` files and folder.
 
+## Dependencies
+- [UglifyJS](https://github.com/mishoo/UglifyJS)
+- [css-minify](https://github.com/purple-force/css-minify)
+- [HTML-minifier](https://github.com/kangax/html-minifier)
+- [JSON-minify](https://github.com/getify/JSON.minify)
+- [commander.js](https://github.com/tj/commander.js)
+- [node-md5](https://github.com/pvorb/node-md5)
+- [hjson-js](https://github.com/hjson/hjson-js)
+
 ----
 
 #### Written by Jovan De Guia
