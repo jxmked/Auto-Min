@@ -18,25 +18,23 @@ argParser
     .description(`${pkg.description}.\nVersion: ${pkg.version}.`)
     .requiredOption('-i, --input <string>', 'Specify an input directory')
     .requiredOption('-o, --output <string>', 'Specify an output directory.')
-    .option('-w, --overwrite', 'Overwrite existing files and folders.', false)
-
+    
 argParser.parse(process.argv);
 const args = argParser.opts();
 /** * * * * * */
 
 // Input and Output Folders
-global.input = path.join(process.cwd(), args.input);
-global.output = path.join(process.cwd(), args.output);
-global.overwrite = (args.overwrite) ? true : false;
+const INPUT = path.join(process.cwd(), args.input);
+const OUTPUT = path.join(process.cwd(), args.output);
 
 // Check input directory from parent directory if exist 
-if(!exists(input)) {
+if(!exists(INPUT)) {
     console.error("Input folder should be existing.");
 }
 
 // Start Scanning
-process.stdout.write(`Scanning directory: ${global.input}\n`);
-Start(global.input);
+process.stdout.write(`Scanning directory: ${INPUT}\n`);
+Start(INPUT);
 overwritePrint(`Scanned ${getScanned().length} files and folders.`);
 console.log("");
 
@@ -49,7 +47,7 @@ getScanned().forEach((value) => {
         FOLDERS.push(value);
         
         // Create Folder Structure
-        mkdir(value.replace(global.input, global.output));
+        mkdir(value.replace(INPUT, OUTPUT));
     } else {
         FILES.push(value);
     }
@@ -63,7 +61,7 @@ if(modified.length > 0) {
     
     // Start Minification
     console.log("\nMinifying...");
-    minify.setInOut(global.input, global.output);
+    minify.setInOut(INPUT, OUTPUT);
     
     // Start and get files that failed to take actions
     const failed = minify.start(modified);
@@ -80,5 +78,7 @@ if(modified.length > 0) {
 }
 
 // Check and delete files if it does not exists in original copy
-remover.setInOut(global.input, global.output);
+remover.setInOut(INPUT, OUTPUT);
 remover.startRemoving();
+
+process.exit(0);
