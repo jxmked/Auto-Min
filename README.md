@@ -34,9 +34,9 @@ Can work Offline after installation.
 
 Easy To use, just `automin -i <input> -o <output>` and wait until its done.
 
-It may takes time on first launch.
+It may takes time at first launch.
 
-And in the next launch only the modified file will be minified or copy to the mirror version.
+And in the next launch only the modified file(s) will be minified or copy to the mirror version.
 
 Files with file format of `.js .css, .html, .json` will be minified.
 
