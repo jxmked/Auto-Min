@@ -10,7 +10,7 @@ With NPM: `npm install -g automin`
 or
 
 - `git clone https://github.com/jxmked/Auto-Min.git`
-- `cd Auto-Min && npm init -g`
+- `cd Auto-Min && npm i -g`
 
 
 ## Command
