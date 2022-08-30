@@ -1,19 +1,19 @@
 {
   "name": "automin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "\"Create a minified mirror version of your js, css, html, json files\"",
   "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords":[
-      "web-minifier",
-      "css-minifier",
-      "html-minifier",
-      "js-minifier",
-      "json-minifier",
-      "cli-minifier",
-      "minified-mirror-code"
+  "keywords": [
+    "web-minifier",
+    "css-minifier",
+    "html-minifier",
+    "js-minifier",
+    "json-minifier",
+    "cli-minifier",
+    "minified-mirror-code"
   ],
   "repository": {
     "type": "git",
