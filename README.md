@@ -1,4 +1,4 @@
-# Web-Minifier
+# Automin
 Create minified mirror of your JS, CSS, HTML, JSON files. 
 
 
