@@ -1,6 +1,6 @@
 {
   "name": "automin",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "\"Create a minified mirror version of your js, css, html, json files\"",
   "main": "bin/index.js",
   "scripts": {
