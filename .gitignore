@@ -108,3 +108,4 @@ dist
 # Manually Added
 files.xio.txt
 /lib
+*.swp
