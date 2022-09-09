@@ -38,13 +38,12 @@ outputs.print = (str:string, options?:typeOptions):string|void => {
 	const cl_width:number = (process.stdout.columns || defaultColumns);
 
 	// Trim string
-	let result:string = str.substring(0, cl_width);
+	let result:string = String(str).normalize('NFKC').substring(0, cl_width);
 
-	// Add empty spaces to replace the old chars from command line
-	result += " ".repeat(cl_width - result.length);
-
-	if(hasEllipsis && str.length >= cl_width)
-		result = result.substring(-3) + "...";
+	if(hasEllipsis && result.length >= cl_width)
+		result = result.substring(0, result.length - 3) + "...";
+	else
+		result += " ".repeat(Math.abs(cl_width - result.length));
 
 	if(overwrite) // Overwrite last command line
 		result = `\r${result}`;
@@ -80,18 +79,21 @@ outputs.print_stats = (str:string, stats:statsType):void => {
 	const sb:string[] = []; // String Builder. By Java Hahaha
 	const reduce_width:number = cl_width - stat_width - diff_width;
 	const stat:string = (stats.stat) ? "OK" : "Failed";
-
-	str = str.substring(0, reduce_width);
 	
+	str = String(str).normalize("NFD");
+	str = str.substring(0, reduce_width);
+
 	if(str.length == reduce_width) {
 		str = str.substring(0, str.length-4) +"..."; // Add ellipsis
 	} else {
 		// Add extra char to fill some empty cells and make a perfect thing...???
-		str += " " +  "~".repeat(reduce_width - str.length - 2);
+		const ma:number = Math.abs(reduce_width - str.length - 2);
+		if(ma != 1)
+			str += " " + "~".repeat(ma);
+
 	}
 
 	sb.push(str + " ");
-	
 	sb.push(center(stat, stat_width - 1));
 	sb.push(center(stats.diff, diff_width - 1));
 
