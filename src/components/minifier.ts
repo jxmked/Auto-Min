@@ -1,6 +1,7 @@
 import uglifyjs from "uglify-js";
 import cleancss from "clean-css";
-
+import envRes from "env-res";
+import {MinifyOptions} from "../../node_modules/@types/uglify-js/index";
 
 type OptionType = {[id:string]:number|boolean|string|object};
 type ObjectTypeResult = {[id:string]:string|boolean|number};
@@ -11,11 +12,10 @@ interface FunctionReturn {
 };
 
 const JS:Function = (filename:string, code:string):FunctionReturn => {
-
-	const options:object = {
+	const nameCache:object = JSON.parse(envRes.get("uglify-js-name-cache"));
+	const options:MinifyOptions = {
 		// Preserve functions name so we can reuse the it from diffrent files
-		nameCache:{},
-		v8:true,
+		nameCache:nameCache,
 		compress:{
 		//	drop_console:false, // Add as option 
 			unsafe_undefined:false
@@ -37,6 +37,9 @@ const JS:Function = (filename:string, code:string):FunctionReturn => {
 	};
 	
 	const result = uglifyjs.minify(code, options);
+	
+	envRes.set("uglify-js-name-cache", JSON.stringify(options.nameCache));
+
 	return {
 		output:result.code,
 		hasError:(typeof result.error != void 0) ? false:true

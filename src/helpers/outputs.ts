@@ -56,19 +56,20 @@ outputs.print = (str:string, options?:typeOptions):string|void => {
 
 interface statsType {
 	diff:string,
-	stat:boolean // True = ok, False = Failed
+	stat:string
 };
 
 // Center a string between given width of spaces
 const center:Function = (str:string, width:number):string => {
 	const len:number = str.length;
 	const reduce:number = Math.abs(width - len);
-	const div:number = Math.floor(reduce / 2);
+	let div:number = Math.floor(reduce / 2);
 	let sample:number = div;
 
 	while((div + sample + len) > width)
 		sample -= 1;
-	
+	sample = Math.abs(sample);
+	div = Math.abs(div);
 	return " ".repeat(div) + str + " ".repeat(sample);
 };
 
@@ -78,7 +79,7 @@ outputs.print_stats = (str:string, stats:statsType):void => {
 	const stat_width:number = 10;
 	const sb:string[] = []; // String Builder. By Java Hahaha
 	const reduce_width:number = cl_width - stat_width - diff_width;
-	const stat:string = (stats.stat) ? "OK" : "Failed";
+	const stat:string = stats.stat;
 	
 	str = String(str).normalize("NFD");
 	str = str.substring(0, reduce_width);

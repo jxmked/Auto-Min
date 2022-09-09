@@ -3,8 +3,7 @@
 const a = require('../lib/index.js');
 
 
-if(a.default) a.default("/data/data/com.termux/files/home/App/Auto-Min",
-	"/storage/emulated/0/@Temp");
+if(a.default) a.default();
 
 /**
  * Hey there from the developer
