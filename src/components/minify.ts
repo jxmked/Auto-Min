@@ -69,7 +69,6 @@ export default (files:string[]) => {
 			res = methods[ext](file, code);
 		}
 		
-
 		try {
 			// Save results to a new/ouput directories
 			writeFileSync(outdir, res.output, {encoding:"utf8",flag:"w"});

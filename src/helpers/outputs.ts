@@ -85,20 +85,19 @@ outputs.print_stats = (str:string, stats:statsType):void => {
 	str = str.substring(0, reduce_width);
 
 	if(str.length == reduce_width) {
-		str = str.substring(0, str.length-4) +"..."; // Add ellipsis
-		str += " ";
+		str = str.substring(0, str.length-4) + "..."; // Add ellipsi
+		str += " "; // Add Margin After String
 	} else {
 		// Fill with some extra chararacters to fill some
 		// empty cells and make a perfect thing...???
-		let ma:number = reduce_width - str.length - 2;
+		const ma:number = reduce_width - str.length - 2;
 
-		str += " "; // Add margin after string
-		
+		str += " "; // Add Margin After String
+
 		if(ma > 0) 
 			str += "~".repeat(ma);
 		if(ma > -1)
-			str += " ";
-		
+			str += " "; // Add margin after generated cell(s)
 	}
 
 	sb.push(str);

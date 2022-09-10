@@ -23,14 +23,13 @@ export default (files:string[]):void => {
 
 	files.forEach((file:string):void => {
 		const out:string = file.replace(input, output);
-		let d:number = 0;
-		let s:number = statSync(file).size;
+		let diff:number = statSync(file).size;
 
 		try {
 			// Possible may not exists if
 			// Output folders is empty or contains
 			// other files
-			d = statSync(out).size;
+			diff -= statSync(out).size;
 		} catch(err:any){}
 
 		const res:boolean = copy(file, out);
@@ -39,7 +38,7 @@ export default (files:string[]):void => {
 			// Using Failed word may confuse the user
 			// Using emoji may not support other terminals
 			stat:(res) ? "Copied":"Bad",
-			diff:sc(s - d)
+			diff:sc(diff)
 		});
 	});
 };
