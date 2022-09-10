@@ -28,3 +28,6 @@ Auto-Listen
 tsconfig.json
 .github
 .vscode
+./src
+tsconfig-build.json
+
