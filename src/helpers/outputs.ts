@@ -86,15 +86,22 @@ outputs.print_stats = (str:string, stats:statsType):void => {
 
 	if(str.length == reduce_width) {
 		str = str.substring(0, str.length-4) +"..."; // Add ellipsis
+		str += " ";
 	} else {
-		// Add extra char to fill some empty cells and make a perfect thing...???
-		const ma:number = Math.abs(reduce_width - str.length - 2);
-		if(ma != 1)
-			str += " " + "~".repeat(ma);
+		// Fill with some extra chararacters to fill some
+		// empty cells and make a perfect thing...???
+		let ma:number = reduce_width - str.length - 2;
 
+		str += " "; // Add margin after string
+		
+		if(ma > 0) 
+			str += "~".repeat(ma);
+		if(ma > -1)
+			str += " ";
+		
 	}
 
-	sb.push(str + " ");
+	sb.push(str);
 	sb.push(center(stat, stat_width - 1));
 	sb.push(center(stats.diff, diff_width - 1));
 
