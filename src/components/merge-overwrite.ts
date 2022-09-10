@@ -12,14 +12,11 @@
  *
  * */
 
-import {
-	unlinkSync,
-	rm
-} from "fs";
+import { unlinkSync, rm } from "fs";
 import get_files from "./get-files";
 import mkdirp from "mkdirp";
 
-const empty_dir:Function = (parent:string, callback:Function):number => {
+export default  (parent:string, callback:Function):number => {
 	const folders:string[] = []
 	let count:number = 0;
 
@@ -39,5 +36,3 @@ const empty_dir:Function = (parent:string, callback:Function):number => {
 	return folders.length + count;
 };
 
-
-export default empty_dir;

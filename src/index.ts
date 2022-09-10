@@ -1,18 +1,11 @@
 import envRes from "env-res";
 import { Command } from "commander";
-import {OptionValues} from "../node_modules/commander/typings/index";
 // @ts-ignore
 import pkg from "../package.json";
 import outputs from "./helpers/outputs";
-import {
-	existsSync,
-	readdirSync
-} from "fs";
+import { existsSync, readdirSync } from "fs";
 
-import {
-	isAbsolute,
-	normalize
-} from "path";
+import { isAbsolute, normalize } from "path";
 
 // import { platform } from 'node:process';
 import start from "./start";
@@ -120,7 +113,7 @@ export default ():void => {
 	envRes.set("overwrite", overwrite);
 	envRes.set("merge", merge);
 
-	if(envRes.get("overwrite")) {
+	if(envRes.get("overwrite") == true) {
 		console.log("Emptying...");
 		const count:number = empty_dir(envRes.get("output"),(err:any) => {
 			if(err)
@@ -130,8 +123,14 @@ export default ():void => {
 			if(!err)
 				start();
 		});
-	} else if(envRes.get("merge")) {
+	} else {
 		start();
 	}
 	
 }
+
+
+
+
+
+
