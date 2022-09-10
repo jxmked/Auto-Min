@@ -10,7 +10,7 @@ With NPM: `npm install -g automin`
 or
 
 - `git clone https://github.com/jxmked/Auto-Min.git`
-- `cd Auto-Min && npm i -g`
+- `cd Auto-Min && npm install && npm link .`
 
 
 ## Command
@@ -19,39 +19,41 @@ or
 | :---: | :---: | :---: |
 | -h, --help | Print Help | Optional |
 | -i, --input | Input Directory | Required |
-| -o, --output | Output Directory | Rrquired |
+| -o, --output | Output Directory | Required |
+| --overwrite | Remove all files from output folder | Optional |
+| --merge | Keep old files from outout folder and overwrite files that has been processed from input folder | optional |
+
+> Note: --merge and --overwrite cannot be use at the same time
 
 ## Notes:
 
 - Output folder will be overwritten and remove files that doesn't belong to original copies
 - Install it globally
 
-## Description
+## Some Notes
 
-Create minified mirror version of you codes written in JavaScript, Css, Html and JSON.
-Automatically remove and keep the same infrastructure of yoyr original code BUT minified.
 Can work Offline after installation.
 
 Easy To use, just `automin -i <input> -o <output>` and wait until its done.
 
-It may takes time at first launch.
+Using uglifyjs `nameCache` feature to preserve function names for next-file-use.
 
-And in the next launch only the modified file(s) will be minified or copy to the mirror version.
+Files with file format of `.js .css, .html, .json` can be minified.
 
-Files with file format of `.js .css, .html, .json` will be minified.
+Other minifiers can be implemented easily by editing `./src/components/minifier.ts` file.
 
-Except for files with `.min.js, .min.css, .min.json, .min.html` at the end.
+Except for files with `.min.` before extension.
 
-Force skip for `.git, package.json, package-lock.json, .vscode, .github` files and folder.
+Force skip for `.git` and `node_modules`
 
 ## Dependencies
 - [UglifyJS](https://github.com/mishoo/UglifyJS)
-- [css-minify](https://github.com/purple-force/css-minify)
 - [HTML-minifier](https://github.com/kangax/html-minifier)
-- [JSON-minify](https://github.com/getify/JSON.minify)
+- [clean-css](https://github.com/clean-css/clean-css)
+- [jsonminify](https://github.com/fkei/JSON.minify)
 - [commander.js](https://github.com/tj/commander.js)
-- [node-md5](https://github.com/pvorb/node-md5)
-- [hjson-js](https://github.com/hjson/hjson-js)
+- [node-mkdirp](https://github.com/substack/node-mkdirp)
+- [env-res](https://github.com/jxmked/NPM-Environment-Variables)
 
 ----
 
