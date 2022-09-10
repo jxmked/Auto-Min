@@ -27,9 +27,7 @@
     "commander": "^9.4.0",
     "css-minify": "^2.0.0",
     "env-res": "^1.0.4",
-    "hjson": "^3.2.2",
     "html-minifier": "^4.0.0",
-    "md5": "^2.3.0",
     "mkdirp": "^1.0.4",
     "uglify-js": "^3.17.0"
   },
