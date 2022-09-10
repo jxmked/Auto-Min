@@ -5,7 +5,7 @@
  * */
 
 export default (bytes:number, decimals:number = 2):string => {
-    if (!+bytes) return '0B'
+    if (bytes < 1) return '0B'
 
     const k:number = 1024
     const dm:number = decimals < 0 ? 0 : decimals

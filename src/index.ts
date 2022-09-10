@@ -36,9 +36,11 @@ export default () => {
 		throw new TypeError("Directories is not valid");
 	
 	console.log("Scanning directories...");
+
 	let scanned_count:number = 0;
 	const to_copy:string[] = [];
 
+	// input and output directories can be change depending on validators
 	const files:string[] = get_files(envRes.get('input'), {
 		filter:(fpath:string, fname:string):boolean => {
 			outputs.print(fpath.replace(envRes.get('input'), ""), {
@@ -56,7 +58,7 @@ export default () => {
 			fname = fname.toLowerCase();
 			let ext:string = extname(fname);
 			
-			// Skip all .min. files
+			// Skip all files with .min. before extension
 			if(fname.endsWith(".min" + ext)) {
 				to_copy.push(fpath);
 				return false;
@@ -65,9 +67,9 @@ export default () => {
 			if(availableTypes.indexOf(ext) == -1) {
 				to_copy.push(fpath);
 				return false;
-			}else{
-				return true;
 			}
+
+			return true;
 		}
 
 	});
@@ -81,7 +83,9 @@ export default () => {
 	// Tries to minify files that has support
 	minify(files);
 
-
+	// Save nameCache as json file after processing
+	// Can be corrupted if the process has been
+	// terminated while working...
 	cache.save_cache("uglify-js-name-cache");
 };
 

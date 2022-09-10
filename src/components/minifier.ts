@@ -53,7 +53,7 @@ const CSS:Function = (filename:string, code:string):FunctionReturn => {
 	const options:object = {
 		compatibility: {
     			colors: {
-      				hexAlpha: false, // controls 4- and 8-character hex color support
+      				hexAlpha: true, // controls 4- and 8-character hex color support
      				opacity: true // controls `rgba()` / `hsla()` color support
 			},
 			properties: {
@@ -61,15 +61,15 @@ const CSS:Function = (filename:string, code:string):FunctionReturn => {
 				backgroundOriginMerging: true, // controls background-origin merging into shorthand
 				backgroundSizeMerging: true, // controls background-size merging into shorthand
 				colors: true, // controls color optimizations
-				ieBangHack: false, // controls keeping IE bang hack
-				ieFilters: false, // controls keeping IE `filter` / `-ms-filter`
-				iePrefixHack: false, // controls keeping IE prefix hack
-				ieSuffixHack: false, // controls keeping IE suffix hack
+				ieBangHack: true, // controls keeping IE bang hack
+				ieFilters: true, // controls keeping IE `filter` / `-ms-filter`
+				iePrefixHack: true, // controls keeping IE prefix hack
+				ieSuffixHack: true, // controls keeping IE suffix hack
 				merging: true, // controls property merging based on understandability
 				shorterLengthUnits: false, // controls shortening pixel units into `pc`, `pt`, or `in` units
 				spaceAfterClosingBrace: true, // controls keeping space after closing brace - `url() no-repeat` into `url()no-repeat`
 				urlQuotes: true, // controls keeping quoting inside `url()`
-				zeroUnits: true // controls removal of units `0` value
+				zeroUnits: false // controls removal of units `0` value
 			},
 			selectors: {
 				adjacentSpace: false, // controls extra space before `nav` element
@@ -121,9 +121,12 @@ const HTML:Function = (filename:string, code:string):FunctionReturn => {
 	//	removeRedundantAttributes: true,
 		removeScriptTypeAttributes: false,
 		removeStyleLinkTypeAttributes: false,
-		sortClassName: true,
+		removeEmptyAttributes:true,
+	//	sortClassName: false,
 	//	useShortDoctype: true,
 		collapseWhitespace: true,
+		conservativeCollapse:true,
+		collapseInlineTagWhitespace:true,
 		qouteCharacter:"\"",
 		minifyJS:min_js,
 		minifyCSS:min_css 
