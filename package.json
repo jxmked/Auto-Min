@@ -24,16 +24,16 @@
   "author": "jxmked",
   "license": "MIT",
   "dependencies": {
+    "clean-css": "^5.3.1",
     "commander": "^9.4.0",
-    "css-minify": "^2.0.0",
     "env-res": "^1.0.4",
     "html-minifier": "^4.0.0",
     "mkdirp": "^1.0.4",
     "uglify-js": "^3.17.0"
   },
   "bin": {
-    "webminifier": "./lib/index.js",
-    "automin": "./lib/index.js"
+    "webminifier": "./bin/index.js",
+    "automin": "./bin/index.js"
   },
   "devDependencies": {
     "@types/clean-css": "^4.2.5",
