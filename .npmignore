@@ -80,6 +80,7 @@ Procfile
 files.xio.txt
 tsconfig.json
 tsconfig.tsbuildinfo
+tsconfig*.json
 /src
 *.map
 /lib/*.d.ts
