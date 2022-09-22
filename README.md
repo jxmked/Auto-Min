@@ -3,6 +3,9 @@
 Create minified mirror of your JS, CSS, HTML, JSON files. 
 
 
+## The Creation
+ - [Migrating My Auto-Min NPM package From Javascript to Typescript Using Vim in Termux. No Audio.](https://youtu.be/8xP3pR-6vg0)
+
 ## Installation
 
 With NPM: `npm install -g automin`
